@@ -1,0 +1,1940 @@
+# there are three screens
+windowManager:
+	loginWindow:
+	signupWindow:
+	logDataWindow:
+	calibrateLeftHandWindow:
+	calibrateRightHandWindow:
+	calibrateLeftLegWindow:
+	calibrateRightLegWindow:
+	calibrateWindow:
+
+# GUI for the login window
+<loginWindow>:
+	username : username
+	password : password
+	FloatLayout:
+		Label:
+			text : "USERNAME: "
+			size_hint : 0.2, 0.1
+			pos_hint : {"x":0.25, "top":0.9}
+		TextInput:
+			id : username
+			multiline :False
+			size_hint : 0.3, 0.1
+			pos_hint : {"x" : 0.45, "top" : 0.9}
+		Label:
+			text : "PASSWORD: "
+			size_hint : 0.2, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.7}
+		TextInput:
+			id : password
+			multiline :False
+			size_hint : 0.3, 0.1
+			pos_hint : {"x" : 0.45, "top" : 0.7}
+		Button:
+			text : "Create an account"
+			size_hint : 0.4, 0.1
+			pos_hint : {"x" : 0.33, "top" : 0.4}
+			on_release:
+				app.root.current = 'signup'
+				root.manager.transition.direction = "left"
+		Button:
+			text : "LOGIN"
+			size_hint : 0.3, 0.1
+			pos_hint : {"x" : 0.39, "top" : 0.2}
+			on_release:
+				root.validate()
+				root.manager.transition.direction = "up"
+
+
+
+# GUI for the signup window
+<signupWindow>:
+	username : username
+	password : password
+	FloatLayout:
+		Label:
+			text : "NAME: "
+			size_hint : 0.2, 0.1
+			pos_hint : {"x":0.25, "top":0.9}
+		TextInput:
+			id : username
+			multiline : False
+			size_hint : 0.3, 0.1
+			pos_hint : {"x" : 0.45, "top" : 0.9}
+		Label:
+			text : "PASSWORD: "
+			size_hint : 0.2, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.7}
+		TextInput:
+			id : password
+			multiline : False
+			size_hint : 0.3, 0.1
+			pos_hint : {"x" : 0.45, "top" : 0.7}
+		Button:
+			text : " SUBMIT"
+			size_hint : 0.3, 0.1
+			pos_hint : {"x" : 0.39, "top" : 0.28}
+			on_press :
+				root.signupbtn()
+				root.manager.transition.direction = "right"
+
+
+<calibrateWindow>:
+	FloatLayout:
+		Button:
+			text : "Calibrate Left Hand"
+			size_hint : 0.5, 0.1
+			pos_hint : {"x":0.25, "top":0.9}
+			on_release:
+			    app.root.current='calibratelefthandwindow'
+			    root.manager.transition.direction = "left"
+		Button:
+			text : "Calibrate Right Hand"
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.7}
+			on_release:
+			    app.root.current='calibraterighthandwindow'
+			    root.manager.transition.direction = "up"
+
+		Button:
+			text : "Calibrate Left Leg"
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.5}
+			on_release:
+			    app.root.current='calibrateleftlegwindow'
+			    root.manager.transition.direction = "right"
+		Button:
+			text : "Calibrate Right Leg"
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.3}
+			on_release:
+			    app.root.current='calibraterightlegwindow'
+			    root.manager.transition.direction = "left"
+		Button:
+		    text: "Back"
+		    size_hint : 0.2,0.1
+		    pos_hint : {"x" : 0.1, "top" : 0.1}
+		    on_release:
+		        app.root.current= 'logdata'
+		        root.manager.transition.direction = "right"
+		Button:
+		    text: "Get ML Prediction"
+		    size_hint : 0.2,0.1
+		    pos_hint : {"x" : 0.7, "top" : 0.1}
+		    on_release:
+		        root.getMlPrediction()
+		        root.manager.transition.direction = "right"
+
+<calibrateLeftHandWindow>:
+	FloatLayout:
+		Button:
+			text : "Calibrate Left Hand Force"
+			size_hint : 0.5, 0.1
+			pos_hint : {"x":0.25, "top":0.85}
+			on_release:
+			    app.root.current='calibratelefthandforcewindow'
+			    root.manager.transition.direction ='left'
+
+		Button:
+			text : "Calibrate Left Hand Flex"
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.65}
+			on_release:
+			    app.root.current='calibratelefthandflexwindow'
+			    root.manager.transition.direction ='left'
+		Button:
+			text : "Calibrate Left Leg Acceleration"
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.45}
+			on_release:
+			    app.root.current='calibratelefthandaccelerationwindow'
+			    root.manager.transition.direction ='left'
+		Button:
+		    text: "Back"
+		    size_hint : 0.2,0.1
+		    pos_hint : {"x" : 0.4, "top" : 0.25}
+		    on_release:
+		        app.root.current= 'calibrateWindow'
+		        root.manager.transition.direction = "left"
+
+
+
+
+<calibrateRightHandWindow>:
+	FloatLayout:
+		Button:
+			text : "Calibrate Right Hand Force"
+			size_hint : 0.5, 0.1
+			pos_hint : {"x":0.25, "top":0.85}
+			on_release:
+			    app.root.current='calibraterighthandforcewindow'
+			    root.manager.transition.direction ='left'
+		Button:
+			text : "Calibrate Right Hand Flex"
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.65}
+			on_release:
+			    app.root.current='calibraterighthandflexwindow'
+			    root.manager.transition.direction ='left'
+		Button:
+			text : "Calibrate Right Hand Acceleration"
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.45}
+			on_release:
+			    app.root.current='calibraterighthandaccelerationwindow'
+			    root.manager.transition.direction ='left'
+
+		Button:
+		    text: "Back"
+		    size_hint : 0.2,0.1
+		    pos_hint : {"x" : 0.4, "top" : 0.25}
+		    on_release:
+		        app.root.current= 'calibrateWindow'
+		        root.manager.transition.direction = "left"
+
+
+<calibrateLeftLegWindow>:
+	FloatLayout:
+		Button:
+			text : "Calibrate Left Leg Force"
+			size_hint : 0.5, 0.1
+			pos_hint : {"x":0.25, "top":0.65}
+			on_release:
+			    app.root.current='calibrateleftlegforcewindow'
+			    root.manager.transition.direction ='left'
+		Button:
+			text : "Calibrate Left Leg Acceleration"
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.45}
+			on_release:
+			    app.root.current='calibrateleftlegaccelerationwindow'
+			    root.manager.transition.direction ='left'
+
+		Button:
+		    text: "Back"
+		    size_hint : 0.2,0.1
+		    pos_hint : {"x" : 0.4, "top" : 0.25}
+		    on_release:
+		        app.root.current= 'calibrateWindow'
+		        root.manager.transition.direction = "left"
+
+
+
+<calibrateRightLegWindow>:
+	FloatLayout:
+		Button:
+			text : "Calibrate Right Leg Force"
+			size_hint : 0.5, 0.1
+			pos_hint : {"x":0.25, "top":0.65}
+			on_release:
+			    app.root.current='calibraterightlegforcewindow'
+			    root.manager.transition.direction ='left'
+		Button:
+			text : "Calibrate Right Leg Acceleration"
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.45}
+			on_release:
+			    app.root.current='calibraterightlegaccelerationwindow'
+			    root.manager.transition.direction ='left'
+        Button:
+		    text: "Back"
+		    size_hint : 0.2,0.1
+		    pos_hint : {"x" : 0.4, "top" : 0.25}
+		    on_release:
+		        app.root.current= 'calibrateWindow'
+		        root.manager.transition.direction = "left"
+
+<calibrateRightHandFlexWindow>:
+	FloatLayout:
+	    canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+		Label:
+			text : " INSTRUCTIONS "
+			size_hint : 0.3, 0.1
+			pos_hint : {"x":0.35, "top":1}
+		Label:
+			text : " Flexing fingers "
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.9}
+		Image:
+            source: '/Users/chuks/Downloads/webmd_rf_photo_of_fist_stretch.jpg'
+            pos_hint : {"x":0.35, "top":0.7}
+            size_hint : 0.3,0.3
+            allow_stretch: True
+        Label:
+			text : "1. Release and spread your fingers wide. "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.4}
+		Label:
+			text : "2. Make a gentle fist, wrapping your thumb across your fingers, "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.3}
+		Label:
+			text : "3. Repeat and Hold for 30 to 60 seconds "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.2}
+        Button:
+            text: "START"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0.7, "top":0.1}
+			on_release:
+			    root.calibrate()
+		Button:
+            text: "BACK"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0, "top":0.1}
+			on_release:
+			    root.back()
+
+<calibrateRightHandForceWindow>:
+	FloatLayout:
+	    canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+		Label:
+			text : " INSTRUCTIONS "
+			size_hint : 0.3, 0.1
+			pos_hint : {"x":0.35, "top":1}
+		Label:
+			text : " Applying Force to fingers "
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.9}
+		Image:
+            source: '/Users/chuks/Downloads/depositphotos_138504290-stock-photo-woman-hand-on-table.jpg'
+            pos_hint : {"x":0.35, "top":0.7}
+            size_hint : 0.3,0.3
+            allow_stretch: True
+        Label:
+			text : "1. Put hand flat on a table. "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.4}
+		Label:
+			text : "2. Apply as much force as you can to your fingers "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.3}
+		Label:
+			text : "3. Repeat and Hold for 30 to 60 seconds "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.2}
+        Button:
+            text: "START"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0.7, "top":0.1}
+			on_release:
+			    root.calibrate()
+		Button:
+            text: "BACK"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0, "top":0.1}
+			on_release:
+			    root.back()
+
+
+<calibrateRightHandAccelerationWindow>:
+	FloatLayout:
+	    canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+		Label:
+			text : " INSTRUCTIONS "
+			size_hint : 0.3, 0.1
+			pos_hint : {"x":0.35, "top":1}
+		Label:
+			text : " Rotating your arms "
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.9}
+		Image:
+            source: '/Users/chuks/Pictures/Photos Library.photoslibrary/resources/derivatives/masters/0/04033332-1BA3-49D9-A5B5-948EB4B9D147_4_5005_c.jpeg'
+            pos_hint : {"x":0.35, "top":0.7}
+            size_hint : 0.3,0.3
+            allow_stretch: True
+        Label:
+			text : "1.Stretch out your right arm sideways. "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.4}
+		Label:
+			text : "2. Rotate your arm clockwise "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.3}
+		Label:
+			text : "3. Repeat and Hold for 30 to 60 seconds "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.2}
+        Button:
+            text: "START"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0.7, "top":0.1}
+			on_release:
+			    root.calibrate()
+		Button:
+            text: "BACK"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0, "top":0.1}
+			on_release:
+			    root.back()
+
+
+
+<calibrateLeftHandFlexWindow>:
+	FloatLayout:
+	    canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+		Label:
+			text : " INSTRUCTIONS "
+			size_hint : 0.3, 0.1
+			pos_hint : {"x":0.35, "top":1}
+		Label:
+			text : " Flexing fingers "
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.9}
+		Image:
+            source: '/Users/chuks/Downloads/webmd_rf_photo_of_fist_stretch.jpg'
+            pos_hint : {"x":0.35, "top":0.7}
+            size_hint : 0.3,0.3
+            allow_stretch: True
+        Label:
+			text : "1. Release and spread your fingers wide. "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.4}
+		Label:
+			text : "2. Make a gentle fist, wrapping your thumb across your fingers, "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.3}
+		Label:
+			text : "3. Repeat and Hold for 30 to 60 seconds "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.2}
+        Button:
+            text: "START"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0.7, "top":0.1}
+			on_release:
+			    root.calibrate()
+		Button:
+            text: "BACK"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0, "top":0.1}
+			on_release:
+			    root.back()
+
+<calibrateLeftHandForceWindow>:
+	FloatLayout:
+	    canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+		Label:
+			text : " INSTRUCTIONS "
+			size_hint : 0.3, 0.1
+			pos_hint : {"x":0.35, "top":1}
+		Label:
+			text : " Applying Force to fingers "
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.9}
+		Image:
+            source: '/Users/chuks/Downloads/depositphotos_138504290-stock-photo-woman-hand-on-table.jpg'
+            pos_hint : {"x":0.35, "top":0.7}
+            size_hint : 0.3,0.3
+            allow_stretch: True
+        Label:
+			text : "1. Put hand flat on a table. "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.4}
+		Label:
+			text : "2. Apply as much force as you can to your fingers "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.3}
+		Label:
+			text : "3. Repeat and Hold for 30 to 60 seconds "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.2}
+        Button:
+            text: "START"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0.7, "top":0.1}
+			on_release:
+			    root.calibrate()
+		Button:
+            text: "BACK"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0, "top":0.1}
+			on_release:
+			    root.back()
+
+
+<calibrateLeftHandAccelerationWindow>:
+	FloatLayout:
+	    canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+		Label:
+			text : " INSTRUCTIONS "
+			size_hint : 0.3, 0.1
+			pos_hint : {"x":0.35, "top":1}
+		Label:
+			text : " Rotating your arms "
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.9}
+		Image:
+            source: '/Users/chuks/Downloads/C0C37B5E-D182-42BA-ADE7-529D4F71017B_4_5005_c.jpeg'
+            pos_hint : {"x":0.35, "top":0.7}
+            size_hint : 0.3,0.3
+            allow_stretch: True
+        Label:
+			text : "1.Stretch out your left arm sideways. "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.4}
+		Label:
+			text : "2. Rotate your arm clockwise "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.3}
+		Label:
+			text : "3. Repeat and Hold for 30 to 60 seconds "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.2}
+        Button:
+            text: "START"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0.7, "top":0.1}
+			on_release:
+			    root.calibrate()
+		Button:
+            text: "BACK"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0, "top":0.1}
+			on_release:
+			    root.back()
+
+
+
+<calibrateLeftLegForceWindow>:
+	FloatLayout:
+	    canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+		Label:
+			text : " INSTRUCTIONS "
+			size_hint : 0.3, 0.1
+			pos_hint : {"x":0.35, "top":1}
+		Label:
+			text : " Applying Force to Foot "
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.9}
+		Image:
+            source: '/Users/chuks/Downloads/_35311_dsc8645_169_4c_wb_4c_1_1_hotspot_zoom.jpg'
+            pos_hint : {"x":0.35, "top":0.7}
+            size_hint : 0.3,0.3
+            allow_stretch: True
+        Label:
+			text : "1. Put Leg Flat against the floor. "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.4}
+		Label:
+			text : "2. Apply as much force as you can to your foot "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.3}
+		Label:
+			text : "3. Repeat and Hold for 30 to 60 seconds "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.2}
+        Button:
+            text: "START"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0.7, "top":0.1}
+			on_release:
+			    root.calibrate()
+		Button:
+            text: "BACK"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0, "top":0.1}
+			on_release:
+			    root.back()
+
+<calibrateLeftLegAccelerationWindow>:
+	FloatLayout:
+	    canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+		Label:
+			text : " INSTRUCTIONS "
+			size_hint : 0.3, 0.1
+			pos_hint : {"x":0.35, "top":1}
+		Label:
+			text : " Rotating your legs "
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.9}
+		Image:
+            source: '/Users/chuks/Pictures/Photos Library.photoslibrary/resources/renders/E/E743983D-EF27-4F8A-A535-5C1CD71113B5_1_201_a.jpeg'
+            pos_hint : {"x":0.35, "top":0.7}
+            size_hint : 0.3,0.3
+            allow_stretch: True
+        Label:
+			text : "1.Stand on your right foot "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.4}
+		Label:
+			text : "2. Rotate your left leg clockwise "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.3}
+		Label:
+			text : "3. Repeat and Hold for 30 to 60 seconds "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.2}
+        Button:
+            text: "START"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0.7, "top":0.1}
+			on_release:
+			    root.calibrate()
+	    Button:
+            text: "BACK"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0, "top":0.1}
+			on_release:
+			    root.back()
+
+<calibrateRightLegForceWindow>:
+	FloatLayout:
+	    canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+		Label:
+			text : " INSTRUCTIONS "
+			size_hint : 0.3, 0.1
+			pos_hint : {"x":0.35, "top":1}
+		Label:
+			text : " Applying Force to Foot "
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.9}
+		Image:
+            source: '/Users/chuks/Pictures/Photos Library.photoslibrary/resources/derivatives/2/27D674E3-0C4F-489B-89D6-959CA1803F06_1_105_c.jpeg'
+            pos_hint : {"x":0.35, "top":0.7}
+            size_hint : 0.3,0.3
+            allow_stretch: True
+        Label:
+			text : " 1. Put Leg Flat against the floor. "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.4}
+		Label:
+			text : "2. Apply as much force as you can to your foot "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.3}
+		Label:
+			text : "3. Repeat and Hold for 30 to 60 seconds "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.2}
+        Button:
+            text: "START"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0.7, "top":0.1}
+			on_release:
+			    root.calibrate()
+		Button:
+            text: "BACK"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0, "top":0.1}
+			on_release:
+			    root.back()
+
+
+<calibrateRightLegAccelerationWindow>:
+	FloatLayout:
+	    canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+		Label:
+			text : " INSTRUCTIONS "
+			size_hint : 0.3, 0.1
+			pos_hint : {"x":0.35, "top":1}
+		Label:
+			text : " Rotating your legs "
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.9}
+		Image:
+            source: '/Users/chuks/Pictures/Photos Library.photoslibrary/resources/renders/F/F74266B7-B47D-4874-9F02-1D905C9ECB03_1_201_a.jpeg'
+            pos_hint : {"x":0.35, "top":0.7}
+            size_hint : 0.3,0.3
+            allow_stretch: True
+        Label:
+			text : "1.Stand on your left foot. "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.4}
+		Label:
+			text : "2. Rotate your right leg clockwise "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.3}
+		Label:
+			text : "3. Repeat and Hold for 30 to 60 seconds "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.2}
+        Button:
+            text: "START"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0.7, "top":0.1}
+			on_release:
+			    root.calibrate()
+		Button:
+            text: "BACK"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0, "top":0.1}
+			on_release:
+			    root.back()
+
+
+
+
+
+
+
+
+<RightHandFlexWindowExercise>:
+	FloatLayout:
+	    canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+		Label:
+			text : " INSTRUCTIONS "
+			size_hint : 0.3, 0.1
+			pos_hint : {"x":0.35, "top":1}
+		Label:
+			text : " Flexing fingers "
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.9}
+		Image:
+            source: '/Users/chuks/Downloads/webmd_rf_photo_of_fist_stretch.jpg'
+            pos_hint : {"x":0.35, "top":0.7}
+            size_hint : 0.3,0.3
+            allow_stretch: True
+        Label:
+			text : "1. Release and spread your fingers wide. "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.4}
+		Label:
+			text : "2. Make a gentle fist, wrapping your thumb across your fingers, "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.3}
+		Label:
+			text : "3. Repeat and Hold for 5 minutes "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.2}
+        Button:
+            text: "START"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0.7, "top":0.1}
+			on_release:
+			    root.exercise()
+		Button:
+            text: "BACK"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0, "top":0.1}
+			on_release:
+			    root.back()
+
+<RightHandForceWindowExercise>:
+	FloatLayout:
+	    canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+		Label:
+			text : " INSTRUCTIONS "
+			size_hint : 0.3, 0.1
+			pos_hint : {"x":0.35, "top":1}
+		Label:
+			text : " Applying Force to fingers "
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.9}
+		Image:
+            source: '/Users/chuks/Downloads/depositphotos_138504290-stock-photo-woman-hand-on-table.jpg'
+            pos_hint : {"x":0.35, "top":0.7}
+            size_hint : 0.3,0.3
+            allow_stretch: True
+        Label:
+			text : "1. Put hand flat on a table. "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.4}
+		Label:
+			text : "2. Apply as much force as you can to your fingers "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.3}
+		Label:
+			text : "3. Repeat and Hold for 5 minutes"
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.2}
+        Button:
+            text: "START"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0.7, "top":0.1}
+			on_release:
+			    root.exercise()
+		Button:
+            text: "BACK"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0, "top":0.1}
+			on_release:
+			    root.back()
+
+
+
+<RightHandAccelerationWindowExercise>:
+	FloatLayout:
+	    canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+		Label:
+			text : " INSTRUCTIONS "
+			size_hint : 0.3, 0.1
+			pos_hint : {"x":0.35, "top":1}
+		Label:
+			text : " Rotating your arms "
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.9}
+		Image:
+            source: '/Users/chuks/Downloads/C0C37B5E-D182-42BA-ADE7-529D4F71017B_4_5005_c.jpeg'
+            pos_hint : {"x":0.35, "top":0.7}
+            size_hint : 0.3,0.3
+            allow_stretch: True
+        Label:
+			text : "1.Stretch out your right arm sideways. "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.4}
+		Label:
+			text : "2. Rotate your arm clockwise "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.3}
+		Label:
+			text : "3. Repeat and Hold for 5 minutes "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.2}
+        Button:
+            text: "START"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0.7, "top":0.1}
+			on_release:
+			    root.exercise()
+		Button:
+            text: "BACK"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0, "top":0.1}
+			on_release:
+			    root.back()
+
+
+<LeftHandFlexWindowExercise>:
+	FloatLayout:
+	    canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+		Label:
+			text : " INSTRUCTIONS "
+			size_hint : 0.3, 0.1
+			pos_hint : {"x":0.35, "top":1}
+		Label:
+			text : " Flexing fingers "
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.9}
+		Image:
+            source: '/Users/chuks/Downloads/webmd_rf_photo_of_fist_stretch.jpg'
+            pos_hint : {"x":0.35, "top":0.7}
+            size_hint : 0.3,0.3
+            allow_stretch: True
+        Label:
+			text : "1. Release and spread your fingers wide. "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.4}
+		Label:
+			text : "2. Make a gentle fist, wrapping your thumb across your fingers, "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.3}
+		Label:
+			text : "3. Repeat and Hold for 5 minutes "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.2}
+        Button:
+            text: "START"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0.7, "top":0.1}
+			on_release:
+			    root.exercise()
+		Button:
+            text: "BACK"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0, "top":0.1}
+			on_release:
+			    root.back()
+
+<LeftHandForceWindowExercise>:
+	FloatLayout:
+	    canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+		Label:
+			text : " INSTRUCTIONS "
+			size_hint : 0.3, 0.1
+			pos_hint : {"x":0.35, "top":1}
+		Label:
+			text : " Applying Force to fingers "
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.9}
+		Image:
+            source: '/Users/chuks/Downloads/depositphotos_138504290-stock-photo-woman-hand-on-table.jpg'
+            pos_hint : {"x":0.35, "top":0.7}
+            size_hint : 0.3,0.3
+            allow_stretch: True
+        Label:
+			text : "1. Put hand flat on a table. "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.4}
+		Label:
+			text : "2. Apply as much force as you can to your fingers "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.3}
+		Label:
+			text : "3. Repeat and Hold for 5 minutes"
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.2}
+        Button:
+            text: "START"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0.7, "top":0.1}
+			on_release:
+			    root.exercise()
+		Button:
+            text: "BACK"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0, "top":0.1}
+			on_release:
+			    root.back()
+
+
+
+<LeftHandAccelerationWindowExercise>:
+	FloatLayout:
+	    canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+		Label:
+			text : " INSTRUCTIONS "
+			size_hint : 0.3, 0.1
+			pos_hint : {"x":0.35, "top":1}
+		Label:
+			text : " Rotating your arms "
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.9}
+		Image:
+            source: '/Users/chuks/Downloads/C0C37B5E-D182-42BA-ADE7-529D4F71017B_4_5005_c.jpeg'
+            pos_hint : {"x":0.35, "top":0.7}
+            size_hint : 0.3,0.3
+            allow_stretch: True
+        Label:
+			text : "1.Stretch out your left arm sideways. "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.4}
+		Label:
+			text : "2. Rotate your arm clockwise "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.3}
+		Label:
+			text : "3. Repeat and Hold for 5 minutes "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.2}
+        Button:
+            text: "START"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0.7, "top":0.1}
+			on_release:
+			    root.exercise()
+		Button:
+            text: "BACK"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0, "top":0.1}
+			on_release:
+			    root.back()
+
+
+<LeftLegForceWindowExercise>:
+	FloatLayout:
+	    canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+		Label:
+			text : " INSTRUCTIONS "
+			size_hint : 0.3, 0.1
+			pos_hint : {"x":0.35, "top":1}
+		Label:
+			text : " Applying Force to Foot "
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.9}
+		Image:
+            source: '/Users/chuks/Downloads/_35311_dsc8645_169_4c_wb_4c_1_1_hotspot_zoom.jpg'
+            pos_hint : {"x":0.35, "top":0.7}
+            size_hint : 0.3,0.3
+            allow_stretch: True
+        Label:
+			text : "1. Put Leg Flat against the floor. "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.4}
+		Label:
+			text : "2. Apply as much force as you can to your foot "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.3}
+		Label:
+			text : "3. Repeat and Hold for 5 minutes "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.2}
+        Button:
+            text: "START"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0.7, "top":0.1}
+			on_release:
+			    root.exercise()
+		Button:
+            text: "BACK"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0, "top":0.1}
+			on_release:
+			    root.back()
+
+<LeftLegAccelerationWindowExercise>:
+	FloatLayout:
+	    canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+		Label:
+			text : " INSTRUCTIONS "
+			size_hint : 0.3, 0.1
+			pos_hint : {"x":0.35, "top":1}
+		Label:
+			text : " Rotating your legs "
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.9}
+		Image:
+            source: '/Users/chuks/Pictures/Photos Library.photoslibrary/resources/renders/E/E743983D-EF27-4F8A-A535-5C1CD71113B5_1_201_a.jpeg'
+            pos_hint : {"x":0.35, "top":0.7}
+            size_hint : 0.3,0.3
+            allow_stretch: True
+        Label:
+			text : "1.Stand on your right foot "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.4}
+		Label:
+			text : "2. Rotate your left leg clockwise "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.3}
+		Label:
+			text : "3. Repeat and Hold for 5 minutes "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.2}
+        Button:
+            text: "START"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0.7, "top":0.1}
+			on_release:
+			    root.exercise()
+		Button:
+            text: "BACK"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0, "top":0.1}
+			on_release:
+			    root.back()
+
+<RightLegForceWindowExercise>:
+	FloatLayout:
+	    canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+		Label:
+			text : " INSTRUCTIONS "
+			size_hint : 0.3, 0.1
+			pos_hint : {"x":0.35, "top":1}
+		Label:
+			text : " Applying Force to Foot "
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.9}
+		Image:
+            source: '/Users/chuks/Pictures/Photos Library.photoslibrary/resources/derivatives/2/27D674E3-0C4F-489B-89D6-959CA1803F06_1_105_c.jpeg'
+            pos_hint : {"x":0.35, "top":0.7}
+            size_hint : 0.3,0.3
+            allow_stretch: True
+        Label:
+			text : " 1. Put Leg Flat against the floor. "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.4}
+		Label:
+			text : "2. Apply as much force as you can to your foot "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.3}
+		Label:
+			text : "3. Repeat and Hold for 5 minutes "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.2}
+        Button:
+            text: "START"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0.7, "top":0.1}
+			on_release:
+			    root.exercise()
+		Button:
+            text: "BACK"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0, "top":0.1}
+			on_release:
+			    root.back()
+
+<RightLegAccelerationWindowExercise>:
+	FloatLayout:
+	    canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+		Label:
+			text : " INSTRUCTIONS "
+			size_hint : 0.3, 0.1
+			pos_hint : {"x":0.35, "top":1}
+		Label:
+			text : " Rotating your legs "
+			size_hint : 0.5, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.9}
+		Image:
+            source: '/Users/chuks/Pictures/Photos Library.photoslibrary/resources/renders/F/F74266B7-B47D-4874-9F02-1D905C9ECB03_1_201_a.jpeg'
+            pos_hint : {"x":0.35, "top":0.7}
+            size_hint : 0.3,0.3
+            allow_stretch: True
+        Label:
+			text : "1.Stand on your left foot. "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.4}
+		Label:
+			text : "2. Rotate your right leg clockwise "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.3}
+		Label:
+			text : "3. Repeat and Hold for 5 minutes "
+			size_hint : 0.8, 0.1
+			pos_hint : {"x":0.1, "top":0.2}
+        Button:
+            text: "START"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0.7, "top":0.1}
+			on_release:
+			    root.exercise()
+		Button:
+            text: "BACK"
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0, "top":0.1}
+			on_release:
+			    root.back()
+
+
+
+# GUI to show validation result
+<logDataWindow>:
+	info : info
+	FloatLayout:
+		Label:
+			id : info
+			size_hint : 0.4, 0.1
+			pos_hint : {"x" : 0.3, "top" : 0.9}
+			text : "SUCCESSFULLY LOGGED IN"
+		Button:
+			text : "Calibration"
+			size_hint : 0.4, 0.1
+			pos_hint : {"x" : 0.3, "top" : 0.7}
+			on_release:
+				app.root.current = 'calibrateWindow'
+				root.manager.transition.direction = "right"
+		Button:
+			text : "Create new account"
+			size_hint : 0.4, 0.1
+			pos_hint : {"x" : 0.3, "top" : 0.5}
+			on_release:
+				app.root.current = 'signup'
+				root.manager.transition.direction = "down"
+		Button:
+		    text: "Continue from Last session"
+		    size_hint : 0.4, 0.1
+			pos_hint : {"x" : 0.3, "top" : 0.3}
+	        on_release:
+                root.checkLastSession()
+				root.manager.transition.direction = "down"
+        Button:
+            text:" View Results "
+            size_hint : 0.4, 0.1
+			pos_hint : {"x" : 0.3, "top" : 0.1}
+			on_release:
+			    app.root.current="resultswindow"
+			    root.manager.transition.direction = "down"
+
+<arthritisWindow>:
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+        Label:
+            text: " From our ML algorithm, Your Most likely Motor Impairment is : "
+            font_size: 50
+            size_hint: 0.8 , 0.1
+            pos_hint : {"x" : 0.1, "top" : 1.0}
+
+        Label:
+            text: "ARTHRITIS"
+            bold: True
+            size_hint: 0.5,0.2
+            font_size: 60
+            pos_hint: {"x" : 0.25, "top" : 0.9}
+        Image:
+            source: '/Users/chuks/Downloads/A7797C06-7131-46C4-8AEF-3AA93C481C18_4_5005_c_500x500.jpeg'
+            pos_hint : {"x":0.1, "top":0.7}
+            size_hint: 0.4,0.4
+
+        Image:
+            size_hint : 0.4,0.4
+            source: '/Users/chuks/Downloads/A41FB9CF-2400-455A-8204-66479A881D48_500x500.jpeg'
+            pos_hint : {"x":0.5, "top":0.7}
+
+        Label:
+            text: " Arthritis usually causes stiffness pain and fatigue.The severity varies from person to person and even from day to day "
+            pos_hint : {"x":0, "top":0.3}
+            size_hint : 1,0.05
+        Label:
+            text: " The joints of the body are the site of much of the action in arthritis. "
+            pos_hint : {"x":0, "top":0.2}
+            size_hint : 1,0.05
+
+        Button:
+            text: " Recommended Exercises"
+            size_hint : 0.4, 0.1
+			pos_hint : {"x" : 0.3, "top" : 0.1}
+			on_release:
+				app.root.current = 'arthritisexercisewindow'
+				root.manager.transition.direction = "down"
+
+
+<cerebralPalsyWindow>:
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+        Label:
+            text: " From our ML algorithm, Your Most likely Motor Impairment is : "
+            font_size: 50
+            size_hint: 0.8 , 0.1
+            pos_hint : {"x" : 0.1, "top" : 1.0}
+
+        Label:
+            text: "CEREBRAL PALSY"
+            bold: True
+            size_hint: 0.5,0.2
+            font_size: 60
+            pos_hint: {"x" : 0.25, "top" : 0.9}
+        Image:
+            source: '/Users/chuks/Downloads/library_500x500.jpg'
+            pos_hint : {"x":0.1, "top":0.7}
+            size_hint: 0.4,0.4
+
+        Image:
+            size_hint : 0.4,0.4
+            source: '/Users/chuks/Downloads/cs-psychiatric-comorbidities-progression-disability-MS-600x400_1_500x500.jpg'
+            pos_hint : {"x":0.5, "top":0.7}
+
+        Label:
+            text: " Cerebral palsy (CP) is a group of disorders that affect a person’s ability to move and maintain balance and posture. "
+            pos_hint : {"x":0, "top":0.3}
+            size_hint : 1,0.05
+        Label:
+            text: " Symptoms of CP vary between persons.A person with severe CP might need to use special equipment to be able to walk "
+            pos_hint : {"x":0, "top":0.2}
+            size_hint : 1,0.05
+
+        Button:
+            text: " Recommended Exercises"
+            size_hint : 0.4, 0.1
+			pos_hint : {"x" : 0.3, "top" : 0.1}
+			on_release:
+			    app.root.current='cerebralpalsywindowexercise'
+			    root.manager.transition.direction = "up"
+
+
+<rightSidedStrokeWindow>:
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+        Label:
+            text: " From our ML algorithm, Your Most likely Motor Impairment is : "
+            font_size: 50
+            size_hint: 0.8 , 0.1
+            pos_hint : {"x" : 0.1, "top" : 1.0}
+
+        Label:
+            text: "RIGHT SIDE STROKE"
+            bold: True
+            size_hint: 0.5,0.2
+            font_size: 60
+            pos_hint: {"x" : 0.25, "top" : 0.9}
+        Image:
+            source: '/Users/chuks/Downloads/7B09DF39-3851-466B-8AFE-162D1791CDF2_4_5005_c_500x500.jpeg'
+            pos_hint : {"x":0.1, "top":0.7}
+            size_hint: 0.4,0.4
+
+        Image:
+            size_hint : 0.4,0.4
+            source: '/Users/chuks/Downloads/EF6363C5-2700-4F53-937B-33BBF51CFC0E_4_5005_c_500x500.jpeg'
+            pos_hint : {"x":0.5, "top":0.7}
+
+        Label:
+            text: " stroke occurs in the left side of the brain, the right side of the body will be affected, producing some or all of the following "
+            pos_hint : {"x":0, "top":0.3}
+            size_hint : 1,0.05
+        Label:
+            text: " Paralysis on the right side of the body, Speech/Language problems , Memory loss, Slow, cautious behavioral style"
+            pos_hint : {"x":0, "top":0.2}
+            size_hint : 1,0.05
+
+        Button:
+            text: " Recommended Exercises"
+            size_hint : 0.4, 0.1
+			pos_hint : {"x" : 0.3, "top" : 0.1}
+			on_release:
+			    app.root.current='rightsidestrokewindowexercise'
+			    root.manager.transition.direction = "up"
+
+<leftSidedStrokeWindow>:
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+        Label:
+            text: " From our ML algorithm, Your Most likely Motor Impairment is : "
+            font_size: 50
+            size_hint: 0.8 , 0.1
+            pos_hint : {"x" : 0.1, "top" : 1.0}
+
+        Label:
+            text: "LEFT SIDE STROKE"
+            bold: True
+            size_hint: 0.5,0.2
+            font_size: 60
+            pos_hint: {"x" : 0.25, "top" : 0.9}
+        Image:
+            source: '/Users/chuks/Downloads/D17ED8C5-68EF-4EE2-8A8E-432EBF56A941_4_5005_c_500x500.jpeg'
+            size_hint: 0.4,0.4
+
+        Image:
+            size_hint : 0.4,0.4
+            source: '/Users/chuks/Downloads/84135111-B2F8-4FD9-9B22-40AD4EB63D09_4_5005_c_500x500.jpeg'
+            pos_hint : {"x":0.5, "top":0.7}
+
+        Label:
+            text: " stroke occurs in the right side of the brain, the left side of the body will be affected, producing some or all of the following "
+            pos_hint : {"x":0, "top":0.3}
+            size_hint : 1,0.05
+        Label:
+            text: " Paralysis on the left side of the body, Vision problems, Memory loss, inquisitive behavioural style"
+            pos_hint : {"x":0, "top":0.2}
+            size_hint : 1,0.05
+
+        Button:
+            text: " Recommended Exercises"
+            size_hint : 0.4, 0.1
+			pos_hint : {"x" : 0.3, "top" : 0.1}
+			on_release:
+			    app.root.current='leftsidestrokewindowexercise'
+			    root.manager.transition.direction = "up"
+
+<parkinsonDiseaseWindow>:
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+        Label:
+            text: " From our ML algorithm, Your Most likely Motor Impairment is : "
+            font_size: 50
+            size_hint: 0.8 , 0.1
+            pos_hint : {"x" : 0.1, "top" : 1.0}
+
+        Label:
+            text: "PARKINSON DISEASE"
+            bold: True
+            size_hint: 0.5,0.2
+            font_size: 60
+            pos_hint: {"x" : 0.25, "top" : 0.9}
+        Image:
+            source: '/Users/chuks/Downloads/PCORI-Story-Women-Parkinsons-Disease-Nov2019-Motor-Nonmotor-Symptoms-799x905_500x500.png'
+            pos_hint : {"x":0.1, "top":0.7}
+            size_hint: 0.4,0.4
+
+        Image:
+            size_hint : 0.4,0.4
+            source: '/Users/chuks/Downloads/shutterstock_763720675-min-771x1024.jpg.optimal_500x500.jpg'
+            pos_hint : {"x":0.5, "top":0.7}
+
+        Label:
+            text: " Parkinson's disease is a progressive nervous system disorder that affects movement. Symptoms start gradually.  "
+            pos_hint : {"x":0, "top":0.3}
+            size_hint : 1,0.05
+        Label:
+            text: " sometimes starting with a barely noticeable tremor in just one hand"
+            pos_hint : {"x":0, "top":0.2}
+            size_hint : 1,0.05
+
+        Button:
+            text: " Recommended Exercises"
+            size_hint : 0.4, 0.1
+			pos_hint : {"x" : 0.3, "top" : 0.1}
+			on_release:
+			    app.root.current='parkinsondiseasewindowexercise'
+			    root.manager.transition.direction = "up"
+
+
+<perfectlyHealthyWindow>:
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+		        size: root.width, root.height
+        Label:
+            text: " From our ML algorithm, Your Most likely Motor Impairment is : "
+            font_size: 50
+            size_hint: 0.8 , 0.1
+            pos_hint : {"x" : 0.1, "top" : 1.0}
+
+        Label:
+            text: "NONE"
+            bold: True
+            size_hint: 0.5,0.2
+            font_size: 60
+            pos_hint: {"x" : 0.25, "top" : 0.9}
+        Image:
+            source: '/Users/chuks/Downloads/MAS_7836_500x500.jpg'
+            pos_hint : {"x":0.1, "top":0.7}
+            size_hint: 0.4,0.4
+
+        Image:
+            size_hint : 0.4,0.4
+            source: '/Users/chuks/Downloads/wellness-webinar-mens-health-hub_500x500.jpg'
+            pos_hint : {"x":0.5, "top":0.7}
+
+        Label:
+            text: " You are perfectly healthy, you have no visible motor impairments "
+            pos_hint : {"x":0, "top":0.3}
+            size_hint : 1,0.05
+        Label:
+            text: " You may still try some exercises, if you want to"
+            pos_hint : {"x":0, "top":0.2}
+            size_hint : 1,0.05
+
+<arthritisWindowExercise>
+    FloatLayout:
+        Button:
+			text : "Joints in left finger"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.1, "top" : 0.85}
+			on_release:
+			    app.root.current='righthandflexwindowexercise'
+			    root.manager.transition.direction = "up"
+	    Button:
+			text : "Joints in right finger"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.55, "top" : 0.85}
+			on_release:
+			    app.root.current='righthandflexwindowexercise'
+			    root.manager.transition.direction = "up"
+	    Button:
+			text : "Left Elbow"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.1, "top" : 0.65}
+			on_release:
+			    app.root.current='lefthandaccelerationwindowexercise'
+			    root.manager.transition.direction = "up"
+	    Button:
+			text : "Right Elbow"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.55, "top" : 0.65}
+			on_release:
+			    app.root.current='righthandaccelerationwindowexercise'
+			    root.manager.transition.direction = "up"
+		Button:
+			text : "Left Knee"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.1, "top" : 0.45}
+			on_release:
+			    app.root.current='leftlegaccelerationwindowexercise'
+			    root.manager.transition.direction = "up"
+	    Button:
+			text : "Right Knee"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.55, "top" : 0.45}
+			on_release:
+			    app.root.current='rightlegaccelerationwindowexercise'
+			    root.manager.transition.direction = "up"
+		Button:
+			text : "STORE"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.55, "top" : 0.25}
+			on_release:
+			    root.insertIntoDatabase()
+		Button:
+			text : "BACK"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.1, "top" : 0.25}
+			on_release:
+			    app.root.current="logdata"
+
+<leftSideStrokeWindowExercise>
+    FloatLayout:
+        Button:
+			text : "Joints in left finger"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.1, "top" : 0.85}
+			on_release:
+			    app.root.current='righthandflexwindowexercise'
+			    root.manager.transition.direction = "up"
+	    Button:
+			text : "Tips of the left finger"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.55, "top" : 0.85}
+			on_release:
+			    app.root.current='lefthandforcewindowexercise'
+			    root.manager.transition.direction = "up"
+	    Button:
+			text : "Left Elbow"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.1, "top" : 0.65}
+			on_release:
+			    app.root.current='lefthandforceaccelerationwindowexercise'
+			    root.manager.transition.direction = "up"
+	    Button:
+			text : "Soles of left foot"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.55, "top" : 0.65}
+			on_release:
+			    app.root.current='leftlegforcewindowexercise'
+			    root.manager.transition.direction = "up"
+		Button:
+			text : "Left Knee"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.1, "top" : 0.45}
+			on_release:
+			    app.root.current='leftlegaccelerationwindowexercise'
+			    root.manager.transition.direction = "up"
+		Button:
+			text : "STORE"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.55, "top" : 0.25}
+			on_release:
+			    root.insertIntoDatabase()
+		Button:
+			text : "BACK"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.1, "top" : 0.25}
+			on_release:
+			    app.root.current="logdata"
+
+<rightSideStrokeWindowExercise>
+    FloatLayout:
+        Button:
+			text : "Joints in right finger"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.1, "top" : 0.85}
+			on_release:
+			    app.root.current='lefthandfor'
+			    root.manager.transition.direction = "up"
+	    Button:
+			text : "Tips of the right finger"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.55, "top" : 0.85}
+			on_release:
+			    app.root.current='righthandforcewindowexercise'
+			    root.manager.transition.direction = "up"
+	    Button:
+			text : "Right Elbow"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.1, "top" : 0.65}
+			on_release:
+			    app.root.current='righthandaccelerationwindowexercise'
+			    root.manager.transition.direction = "up"
+	    Button:
+			text : "Soles of right foot"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.55, "top" : 0.65}
+			on_release:
+			    app.root.current='rightlegforcewindowexercise'
+			    root.manager.transition.direction = "up"
+		Button:
+			text : "Right Knee"
+			size_hint : 0.35, 0.2
+			pos_hint : {"x" : 0.1, "top" : 0.45}
+			on_release:
+			    app.root.current='rightlegaccelerationwindowexercise'
+			    root.manager.transition.direction = "up"
+		Button:
+			text : "STORE"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.55, "top" : 0.25}
+			on_release:
+			    root.insertIntoDatabase()
+		Button:
+			text : "BACK"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.1, "top" : 0.25}
+			on_release:
+			    app.root.current="logdata"
+
+<cerebralPalsyWindowExercise>
+    FloatLayout:
+        Button:
+			text : "Joints in left finger"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.1, "top" : 1}
+			on_release:
+			    app.root.current='lefthandflexwindowexercise'
+			    root.manager.transition.direction = "up"
+	    Button:
+			text : "Joints in right finger"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.55, "top" : 1}
+			on_release:
+			    app.root.current='righthandflexwindowexercise'
+			    root.manager.transition.direction = "up"
+	    Button:
+			text : "Left Elbow"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.1, "top" : 0.8}
+			on_release:
+			    app.root.current='lefthandacceleratsionwindowexercise'
+			    root.manager.transition.direction = "up"
+	    Button:
+			text : "Right Elbow"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.55, "top" : 0.8}
+			on_release:
+			    app.root.current='righthandaccelerationwindowexercise'
+			    root.manager.transition.direction = "up"
+		Button:
+			text : "Left Knee"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.1, "top" : 0.6}
+			on_release:
+			    app.root.current='leftlegaccelerationwindowexercise'
+			    root.manager.transition.direction = "up"
+	    Button:
+			text : "Right Knee"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.55, "top" : 0.6}
+			on_release:
+			    app.root.current='rightlegaccelerationwindowexercise'
+			    root.manager.transition.direction = "up"
+	    Button:
+			text : "Tips of left finger"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.1, "top" : 0.4}
+			on_release:
+			    app.root.current='lefthandforcewindowexercise'
+			    root.manager.transition.direction = "up"
+	    Button:
+			text : "Tips of right finger"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.55, "top" : 0.4}
+			on_release:
+			    app.root.current='righthandforcewindowexercise'
+			    root.manager.transition.direction = "up"
+		Button:
+			text : "Soles of left foot"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.1, "top" : 0.2}
+			on_release:
+			    app.root.current='leftlegforcewindowexercise'
+			    root.manager.transition.direction = "up"
+	    Button:
+			text : "Soles of right foot"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.55, "top" : 0.2}
+			on_release:
+			    app.root.current='rightlegforcewindowexercise'
+			    root.manager.transition.direction = "up"
+		Button:
+			text : "STORE"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.55, "top" : 0.1}
+			on_release:
+			    root.insertIntoDatabase()
+		Button:
+			text : "BACK"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.1, "top" : 0.1}
+			on_release:
+			    app.root.current="logdata"
+
+
+<parkinsonDiseaseWindowExercise>
+    FloatLayout:
+        Button:
+			text : " Soles of left foot "
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.1, "top" : 0.85}
+			on_release:
+			    app.root.current='leftlegforcewindowexercise'
+			    root.manager.transition.direction = "up"
+	    Button:
+			text : "Soles of right foot"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.55, "top" : 0.85}
+			on_release:
+			    app.root.current='rightlegforcewindowexercise'
+			    root.manager.transition.direction = "up"
+	    Button:
+			text : "Left Elbow"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.1, "top" : 0.65}
+			on_release:
+			    app.root.current='lefthandaccelerationwindowexercise'
+			    root.manager.transition.direction = "up"
+	    Button:
+			text : "Right Elbow"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.55, "top" : 0.65}
+			on_release:
+			    app.root.current='righthandaccelerationwindowexercise'
+			    root.manager.transition.direction = "up"
+		Button:
+			text : "Left Knee"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.1, "top" : 0.45}
+			on_release:
+			    app.root.current='leftlegaccelerationwindowexercise'
+			    root.manager.transition.direction = "up"
+	    Button:
+			text : "Right Knee"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.55, "top" : 0.45}
+			on_release:
+			    app.root.current='rightlegaccelerationwindowexercise'
+			    root.manager.transition.direction = "up"
+		Button:
+			text : "STORE"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.55, "top" : 0.25}
+			on_release:
+			    root.insertIntoDatabase()
+		Button:
+			text : "BACK"
+			size_hint : 0.35, 0.1
+			pos_hint : {"x" : 0.1, "top" : 0.25}
+			on_release:
+			    app.root.current="logdata"
+
+
+# GUI for pop up window
+<P>:
+    Label:
+        text: "Username already exists"
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "top":1}
+
+<P1>:
+    Label:
+        text: "Invalid Username and Password"
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "top":1}
+<P2>:
+    Label:
+        text: " Please do not press anything, Currently collecting data "
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "top":1}
+
+<P3>:
+    Label:
+        text: "Please try again, failed to connect"
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "top":1}
+
+<leftHandValues>:
+    FloatLayout:
+        Button:
+			text : "Button"
+			size_hint : 0.35, 0.2
+			pos_hint : {"x" : 0.55, "top" : 0.9}
+			on_release:
+			    root.changeImage()
+        Image:
+            id: image
+            source: '/Users/chuks/Downloads/mcdonalds.jpg'
+            size: self.texture_size
+<rightHandValues>:
+    FloatLayout:
+        Button:
+			text : "Button"
+			size_hint : 0.35, 0.2
+			pos_hint : {"x" : 0.55, "top" : 0.9}
+			on_release:
+			    root.changeImage()
+        Image:
+            id: image
+            source: '/Users/chuks/Downloads/mcdonalds.jpg'
+            size: self.texture_size
+<rightLegValues>:
+    FloatLayout:
+        Button:
+			text : "Button"
+			size_hint : 0.35, 0.2
+			pos_hint : {"x" : 0.55, "top" : 0.9}
+			on_release:
+			    root.changeImage()
+        Image:
+            id: image
+            source: '/Users/chuks/Downloads/mcdonalds.jpg'
+            size: self.texture_size
+<leftLegValues>:
+    FloatLayout:
+        Button:
+			text : "Button"
+			size_hint : 0.35, 0.2
+			pos_hint : {"x" : 0.55, "top" : 0.9}
+			on_release:
+			    root.changeImage()
+        Image:
+            id: image
+            source: '/Users/chuks/Downloads/mcdonalds.jpg'
+            size: self.texture_size
+
+<ResultsWindow>:
+    FloatLayout:
+        Button:
+			text : "Display Left Hand"
+			size_hint : 0.3, 0.1
+			pos_hint : {"x" : 0.15, "top" : 0.4}
+			on_release:
+			    root.plotLeftHand()
+			    root.changeImageLeftHand()
+		Button:
+			text : "Display Right Hand"
+			size_hint : 0.3, 0.1
+			pos_hint : {"x" : 0.55, "top" : 0.4}
+			on_release:
+			    root.plotRightHand()
+			    root.changeImageRightHand()
+	    Button:
+			text : "Display Left Leg"
+			size_hint : 0.3, 0.1
+			pos_hint : {"x" : 0.15, "top" : 0.2}
+			on_release:
+			    root.plotLeftLeg()
+			    root.changeImageLeftLeg()
+		Button:
+			text : "Display Right Leg"
+			size_hint : 0.3, 0.1
+			pos_hint : {"x" : 0.55, "top" : 0.2}
+			on_release:
+			    root.plotRightLeg()
+			    root.changeImageRightLeg()
+	    Image:
+	        id:image
+            source: '/Users/chuks/Downloads/mcdonalds.jpg'
+            pos_hint : {"x":0.15, "top":1.0}
+            size_hint: 0.7,0.5
+
